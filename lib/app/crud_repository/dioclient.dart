@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 
 class Paths{
   static String baseUrl = "https://reqres.in/api";
-  static String users = "/users";
+  static String usersUrl = "/users";
+  static String users = "/users/2";
 }
 /// Create a singleton class to contain all Dio methods and helper functions
 class DioClient {
@@ -14,14 +15,16 @@ class DioClient {
     return instance;
   }
 
+
   final Dio _dio = Dio(
       BaseOptions(
           baseUrl: Paths.baseUrl,
           connectTimeout: const Duration(seconds: 60),
           receiveTimeout: const Duration(seconds: 60),
           responseType: ResponseType.json
-      )
+      ),
   );
+
 
   ///Get Method
   Future<Map<String, dynamic>> get(
