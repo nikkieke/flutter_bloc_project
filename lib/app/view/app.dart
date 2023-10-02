@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
-import '../../crud/home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_project/app/crud_repository/crud_repository.dart';
+import 'package:flutter_bloc_project/crud/crud.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({Key? key, required this.crudInterface}) : super(key: key);
+
+  final CrudInterface crudInterface;
 
   @override
   Widget build(BuildContext context) {
-    return const AppView();
+
+    return RepositoryProvider.value(
+      value: crudInterface,
+      child: BlocProvider(
+          create: (_) => CrudBloc(crudInterface: crudInterface),
+          child: const AppView()),
+    );
   }
 }
-
 
 
 class AppView extends StatelessWidget {
