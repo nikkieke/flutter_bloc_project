@@ -16,15 +16,15 @@ class NewUser extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  decoration: const InputDecoration(hintText: 'Enter name'),
+                const TextField(
+                  decoration: InputDecoration(hintText: 'Enter name'),
                   //controller: provider.nameCtr,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  decoration: const InputDecoration(hintText: 'Enter job'),
+                const TextField(
+                  decoration: InputDecoration(hintText: 'Enter job'),
                   //controller: provider.jobCtr,
                 ),
                 const SizedBox(
@@ -33,13 +33,13 @@ class NewUser extends StatelessWidget {
 
                 ElevatedButton(
                     onPressed: ()async{
-                  // await provider.createNewUser();
-                  // if(mounted){
-                  //   showDialog(
-                  //       context: context,
-                  //       builder: (context) => NewUserDialog(provider: provider,));
-                  // }
-                },
+                      // await provider.createNewUser();
+                      // if(mounted){
+                      //   showDialog(
+                      //       context: context,
+                      //       builder: (context) => NewUserDialog(provider: provider,));
+                      // }
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       height: 50,

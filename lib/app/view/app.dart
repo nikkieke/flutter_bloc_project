@@ -4,17 +4,17 @@ import 'package:flutter_bloc_project/app/crud_repository/crud_repository.dart';
 import 'package:flutter_bloc_project/crud/crud.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key, required this.crudInterface}) : super(key: key);
+  const App({Key? key, required this.crudService}) : super(key: key);
 
-  final CrudInterface crudInterface;
+  final CrudService crudService;
 
   @override
   Widget build(BuildContext context) {
 
     return RepositoryProvider.value(
-      value: crudInterface,
+      value: crudService,
       child: BlocProvider(
-          create: (_) => CrudBloc(crudInterface: crudInterface),
+          create: (_) => GetUserBloc(crudService: crudService),
           child: const AppView()),
     );
   }

@@ -1,2 +1,1 @@
-export 'view/view.dart';
-export 'bloc/bloc.dart';
+export 'get_user/get_user.dart';
