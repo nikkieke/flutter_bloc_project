@@ -10,30 +10,30 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideDrawer(),
-      appBar: AppBar(title: const Text("Get User"),),
-      body: BlocBuilder<GetUserBloc, GetUserState>(
-          builder: (context, state) {
-            context.read<GetUserBloc>().add(GetUser());
-            if (state is GetUserLoaded){
-              return SafeArea(
-                child: Center(
-                  child: ListTile(
-                    leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image.network("${state.user.avatar} ")
-                    ),
-                    title: Text('${state.user.firstName}'),
-                    subtitle: Text('${state.user.lastName}'),
-                  ),
-                ),
-              );
-            }else if(state is GetUserLoading){
-              return const Center(child: CircularProgressIndicator());
-            }else{
-              return const Text('something went wrong');
-            }
-          }
+      appBar: AppBar(
+        title: const Text("Get User"),
       ),
+      body: BlocBuilder<GetUserBloc, GetUserState>(builder: (context, state) {
+        switch (state) {
+          case GetUserLoading():
+            return const Center(child: CircularProgressIndicator());
+          case GetUserLoaded():
+            return SafeArea(
+              child: Center(
+                child: ListTile(
+                  leading: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: Image.network("${state.user.avatar} ")),
+                  title: Text('${state.user.firstName}'),
+                  subtitle: Text('${state.user.lastName}'),
+                ),
+              ),
+            );
+          case GetUserError():
+            return const Text('Something went wrong!');
+        }
+        return Container();
+      }),
     );
   }
 }

@@ -7,9 +7,8 @@ part 'get_user_event.dart';
 part 'get_user_state.dart';
 
 class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
-  GetUserBloc({required this.crudService}) : super(GetUserInitial()) {
+  GetUserBloc({required this.crudService}) : super(GetUserLoading()) {
     on<GetUser>(_onGetUser);
-
 
   }
   final CrudService crudService;
@@ -19,10 +18,15 @@ class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
       Emitter<GetUserState> emit,
       ) async{
     emit (GetUserLoading());
+    try{
+      final result = await crudService.getUser();
+      emit(GetUserLoaded(user: result));
+    } catch (_) {
+      emit(GetUserError());
+    }
 
-    final result = await crudService.getUser();
 
-    emit(GetUserLoaded(user: result));
+
 
   }
 }

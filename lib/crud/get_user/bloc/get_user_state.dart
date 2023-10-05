@@ -5,12 +5,6 @@ abstract class GetUserState extends Equatable {
 }
 
 
-///This is the initial state when no event has been started
-class GetUserInitial extends GetUserState {
-  @override
-  List<Object> get props => [];
-}
-
 ///This is the loading state to show when an event starts
 class GetUserLoading extends GetUserState{
   @override
@@ -26,4 +20,10 @@ class GetUserLoaded extends GetUserState{
   @override
   List<Object?> get props => [user];
 
+}
+
+///This is the Error state
+class GetUserError extends GetUserState {
+  @override
+  List<Object> get props => [];
 }
