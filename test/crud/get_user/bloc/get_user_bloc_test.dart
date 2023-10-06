@@ -21,14 +21,21 @@ void main(){
     });
 
     blocTest<GetUserBloc, GetUserState>(
-      'emits loaded state when loading successfully',
-      build: () => GetUserBloc(),
-      act: (bloc) {
-        // TODO: implement
-      },
-      expect: () => <GetUserState>[
-        // TODO: implement
-      ],
+      'emits [ GetUserLoading,GetUserLoaded ]  when loaded successfully',
+      setUp: ()=> when(mockCrudService.getUser).thenAnswer((_)async => const User()),
+      build: () => GetUserBloc(crudService: mockCrudService),
+      act: (bloc) => bloc.add(GetUser()),
+      expect: () => <GetUserState>[GetUserLoading(), const GetUserLoaded()],
+      verify: (_)=> verify(mockCrudService.getUser).called(1),
+    );
+
+    blocTest<GetUserBloc, GetUserState>(
+      'emits [ GetUserLoading,GetUserLoaded ]  when loaded successfully',
+      setUp: ()=> when(mockCrudService.getUser).thenAnswer((_)async => const User()),
+      build: () => GetUserBloc(crudService: mockCrudService),
+      act: (bloc) => bloc.add(GetUser()),
+      expect: () => <GetUserState>[GetUserLoading(), const GetUserLoaded()],
+      verify: (_)=> verify(mockCrudService.getUser).called(1),
     );
   });
 }

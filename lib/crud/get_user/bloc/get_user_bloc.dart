@@ -25,8 +25,5 @@ class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
       emit(GetUserError());
     }
 
-
-
-
   }
 }

@@ -14,7 +14,7 @@ class GetUserLoading extends GetUserState{
 
 ///This is the state to be shown when user data has been gotten
 class GetUserLoaded extends GetUserState{
-  const GetUserLoaded({required this.user});
+  const GetUserLoaded({this.user = const User()});
 
   final User user;
   @override
