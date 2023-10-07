@@ -21,11 +21,11 @@ void main(){
     });
 
     blocTest<GetUserBloc, GetUserState>(
-      'emits [ GetUserLoading,GetUserLoaded ]  when loaded successfully',
-      setUp: ()=> when(mockCrudService.getUser).thenAnswer((_)async => const User()),
+      'emits [ GetUserLoading,GetUserError ] when loading fails',
+      setUp: ()=> when(mockCrudService.getUser).thenThrow(Exception()),
       build: () => GetUserBloc(crudService: mockCrudService),
       act: (bloc) => bloc.add(GetUser()),
-      expect: () => <GetUserState>[GetUserLoading(), const GetUserLoaded()],
+      expect: () => <GetUserState>[GetUserLoading(), GetUserError()],
       verify: (_)=> verify(mockCrudService.getUser).called(1),
     );
 

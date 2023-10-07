@@ -14,7 +14,7 @@ class App extends StatelessWidget {
     return RepositoryProvider.value(
       value: crudService,
       child: BlocProvider(
-          create: (_) => GetUserBloc(crudService: crudService),
+          create: (_) => GetUserBloc(crudService: crudService)..add(GetUser()),
           child: const AppView()),
     );
   }

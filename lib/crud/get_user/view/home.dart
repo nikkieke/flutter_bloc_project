@@ -13,27 +13,38 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Get User"),
       ),
-      body: BlocBuilder<GetUserBloc, GetUserState>(builder: (context, state) {
-        switch (state) {
-          case GetUserLoading():
-            return const Center(child: CircularProgressIndicator());
-          case GetUserLoaded():
-            return SafeArea(
-              child: Center(
-                child: ListTile(
-                  leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(100),
-                      child: Image.network("${state.user.avatar} ")),
-                  title: Text('${state.user.firstName}'),
-                  subtitle: Text('${state.user.lastName}'),
-                ),
+      body: const SafeArea(child: UserProfile()),
+    );
+  }
+}
+
+class UserProfile extends StatelessWidget {
+  const UserProfile({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+
+    return BlocBuilder<GetUserBloc, GetUserState>(builder: (context, state) {
+      switch (state) {
+        case GetUserLoaded():
+          return Center(
+              child: ListTile(
+                tileColor: Colors.black26,
+                leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.network("${state.user.avatar}")),
+                title: Text('${state.user.firstName}'),
+                subtitle: Text('${state.user.lastName}'),
               ),
             );
-          case GetUserError():
-            return const Text('Something went wrong!');
-        }
-        return Container();
-      }),
-    );
+        case GetUserLoading():
+          print(state);
+          return const Center(child: CircularProgressIndicator());
+        case GetUserError():
+          return const Text('Something went wrong!');
+      }
+    });
   }
 }

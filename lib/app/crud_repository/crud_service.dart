@@ -21,7 +21,7 @@ class CrudService{
   Future<User> getUser() async{
     try {
       final response = await DioClient.instance.get(Paths.users);
-      final user = User.fromJson(response);
+      final user = User.fromJson(response["data"]);
       return user;
     }on DioException catch(e){
       var error = DioErrors(e);

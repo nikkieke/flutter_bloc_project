@@ -1,6 +1,7 @@
 part of 'get_user_bloc.dart';
 
-abstract class GetUserState extends Equatable {
+@immutable
+sealed  class GetUserState extends Equatable {
   const GetUserState();
 }
 
