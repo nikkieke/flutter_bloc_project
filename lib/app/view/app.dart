@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_project/app/crud_repository/crud_repository.dart';
 import 'package:flutter_bloc_project/crud/crud.dart';
 
+
 class App extends StatelessWidget {
   const App({Key? key, required this.crudService}) : super(key: key);
 
@@ -13,8 +14,15 @@ class App extends StatelessWidget {
 
     return RepositoryProvider.value(
       value: crudService,
-      child: BlocProvider(
-          create: (_) => GetUserBloc(crudService: crudService)..add(GetUser()),
+      child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (_) =>  GetUserBloc(crudService: crudService)..add(GetUser()),
+            ),
+            BlocProvider(
+              create: (_) =>  AddNewUserBloc(crudService: crudService),
+            )
+          ],
           child: const AppView()),
     );
   }

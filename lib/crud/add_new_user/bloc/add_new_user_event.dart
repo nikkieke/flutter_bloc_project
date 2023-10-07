@@ -5,6 +5,8 @@ abstract class AddNewUserEvent extends Equatable {
 }
 
 class AddNewUser extends AddNewUserEvent{
+  const AddNewUser(this.name, this.job);
+
   final String name;
   final String job;
 

@@ -11,13 +11,13 @@ class AddNewUserBloc extends Bloc<AddNewUserEvent, AddNewUserState> {
   final CrudService crudService;
   AddNewUserBloc({required this.crudService}) : super(AddNewUserInitial()) {
 
-    on<AddNewUserEvent>((event, emit) async{
+    on<AddNewUser>((event, emit,) async{
       emit(AddNewUserLoading());
       try {
-        final result = await crudService.addNewUser(name, job);
+        final result = await crudService.addNewUser(event.name, event.job);
         emit(AddNewUserLoaded(newUser: result));
       } catch (_) {
-        emit(GetUserError());
+        throw Exception();
       }
 
     });
