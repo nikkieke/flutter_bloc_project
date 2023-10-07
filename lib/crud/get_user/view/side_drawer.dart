@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_project/crud/add_new_user/view/view.dart';
+
 class SideDrawer extends StatelessWidget {
   const SideDrawer({
     super.key,
@@ -25,6 +27,7 @@ class SideDrawer extends StatelessWidget {
                       title: const Text("Create new user",style: TextStyle(
                           color: Colors.white,  fontSize: 15)),
                       onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=> const NewUserView()));
 
                       }
                   ),
