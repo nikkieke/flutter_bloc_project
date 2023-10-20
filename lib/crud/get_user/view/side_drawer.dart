@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_project/crud/add_new_user/view/view.dart';
+import 'package:flutter_bloc_project/crud/get_user/get_user.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({
@@ -21,7 +22,7 @@ class SideDrawer extends StatelessWidget {
                       title: const Text("Get User",style: TextStyle(
                           color: Colors.white,  fontSize: 15)),
                       onTap: (){
-                        //Navigator.push(context, MaterialPageRoute(builder:(context)=> const UserList()));
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=> const HomePage()));
                       }
                   ),
                   ListTile(
