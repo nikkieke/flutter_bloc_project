@@ -21,7 +21,13 @@ class App extends StatelessWidget {
             ),
             BlocProvider(
               create: (_) =>  AddNewUserBloc(crudService: crudService),
-            )
+            ),
+            BlocProvider(
+              create: (_) =>  UpdateUserBloc(crudService: crudService),
+            ),
+            BlocProvider(
+              create: (_) =>  DeleteUserBloc(crudService: crudService),
+            ),
           ],
           child: const AppView()),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_project/crud/add_new_user/view/view.dart';
-import 'package:flutter_bloc_project/crud/get_user/get_user.dart';
+import 'package:flutter_bloc_project/crud/crud.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({
@@ -39,7 +38,7 @@ class SideDrawer extends StatelessWidget {
                       title: const Text("Update User",style: TextStyle(
                           color: Colors.white,  fontSize: 15)),
                       onTap: (){
-
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=> const UpdateUserView()));
                       }
                   ),
                   ListTile(
@@ -47,7 +46,7 @@ class SideDrawer extends StatelessWidget {
                       title: const Text("Delete User",style: TextStyle(
                           color: Colors.white,  fontSize: 15)),
                       onTap: (){
-
+                        Navigator.push(context, MaterialPageRoute(builder:(context)=> const DeleteUserView()));
                       }
                   ),
                 ]

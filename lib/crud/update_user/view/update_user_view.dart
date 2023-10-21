@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'view.dart';
 
-class NewUserView extends StatelessWidget {
-  const NewUserView({Key? key,}) : super(key: key);
+class UpdateUserView extends StatelessWidget {
+  const UpdateUserView({Key? key,}) : super(key: key);
 
 
   @override
@@ -10,8 +10,8 @@ class NewUserView extends StatelessWidget {
     return  Scaffold(
       appBar: AppBar(),
       body: const SafeArea(
-          child: NewUserWidget(),
-        ),
+        child: UpdateUserWidget(),
+      ),
     );
   }
 }

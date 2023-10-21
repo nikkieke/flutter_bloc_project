@@ -30,17 +30,17 @@ class UserProfile extends StatelessWidget {
       switch (state) {
         case GetUserLoaded():
           return Center(
-              child: ListTile(
-                tileColor: Colors.black26,
-                leading: ClipRRect(
+            child: Column(
+              children: [
+                ClipRRect(
                     borderRadius: BorderRadius.circular(50),
                     child: Image.network("${state.user.avatar}")),
-                title: Text('${state.user.firstName}'),
-                subtitle: Text('${state.user.lastName}'),
-              ),
-            );
+                Text('${state.user.firstName} ${state.user.lastName}',
+                  style: const TextStyle(fontSize: 16, color: Colors.white),)
+              ],
+            ),
+          );
         case GetUserLoading():
-          print(state);
           return const Center(child: CircularProgressIndicator());
         case GetUserError():
           return const Text('Something went wrong!');

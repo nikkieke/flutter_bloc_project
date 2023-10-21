@@ -1,7 +1,5 @@
-import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_project/app/crud_repository/crud_repository.dart';
 
 part 'add_new_user_event.dart';
@@ -17,7 +15,7 @@ class AddNewUserBloc extends Bloc<AddNewUserEvent, AddNewUserState> {
         final result = await crudService.addNewUser(event.name, event.job);
         emit(AddNewUserLoaded(newUser: result));
       } catch (_) {
-        throw Exception();
+        rethrow;
       }
 
     });
