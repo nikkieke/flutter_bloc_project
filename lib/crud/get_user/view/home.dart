@@ -28,6 +28,8 @@ class UserProfile extends StatelessWidget {
 
     return BlocBuilder<GetUserBloc, GetUserState>(builder: (context, state) {
       switch (state) {
+        case GetUserLoading():
+          return const Center(child: CircularProgressIndicator());
         case GetUserLoaded():
           return Center(
             child: Column(
@@ -40,8 +42,6 @@ class UserProfile extends StatelessWidget {
               ],
             ),
           );
-        case GetUserLoading():
-          return const Center(child: CircularProgressIndicator());
         case GetUserError():
           return const Text('Something went wrong!');
       }
