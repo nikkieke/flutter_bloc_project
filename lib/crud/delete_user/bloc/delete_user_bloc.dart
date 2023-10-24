@@ -12,7 +12,7 @@ class DeleteUserBloc extends Bloc<DeleteUserEvent, DeleteUserState> {
     on<DeleteUser>((event, emit) async{
       emit (DeleteUserLoading());
       try{
-        await crudService.deleteUser(event.id);
+       await crudService.deleteUser(event.id);
         emit (DeleteUserLoaded());
       }catch(_){
         rethrow;
