@@ -59,7 +59,7 @@ class UpdateUserWidget extends StatelessWidget {
                     }
                   },
                   child: state is UpdateUserLoaded? || state is UpdateUserInitial?
-                  const Text("Create User",
+                  const Text("Update User",
                     style: TextStyle(color: Colors.black, fontSize: 16),)
                       :const CircularProgressIndicator(),
                 )
