@@ -38,7 +38,14 @@ To run the application, execute the following command in the terminal:
 
 ```
 flutter run
+
 ```
+
+## End Result
+
+This is how the application will look like once you have successsfully built it on your device.
+![InShot_20231102_151805194](https://github.com/nikkieke/flutter_bloc_project/assets/95222620/852c3d4f-2107-4ad8-895f-ff5039b385f0)
+
 
 ## License
 
